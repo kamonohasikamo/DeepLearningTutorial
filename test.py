@@ -130,3 +130,70 @@ print(score['Japanese'])
 
 # 他人が定義した辞書型で、どのようなキーがあるのか、などを調べるメソッド
 # ・key() : キーのリストを取得
+# ・values() : 値のリストを取得
+# ・items() : 各要素のタプルを並べたリストを取得
+print(score.keys())
+print(score.values())
+print(score.items())
+
+# if文for文の書き方
+
+# 5回繰り返す
+for i in range(5):
+	print(i)
+print(i)
+
+sample = ['佐藤', '鈴木', '高橋']
+for i in range(3):
+	print(sample[i])
+
+for i in range(3):
+	print('{}さん'.format(sample[i]))
+
+for i in range(len(sample)):
+	print('{}さんん'.format(sample[i]))
+
+for sampleCount in sample:
+	print('{}さん'.format(sampleCount))
+
+for i, name in enumerate(sample):
+	message = '{}番目: {}さん'.format(i, name)
+	print(message)
+
+# 関数
+# double()を定義
+def double(input):
+	print(2 * input)
+
+double(3)
+double(1.5)
+
+def add(a, b):
+	print(a + b)
+
+add(1, 2)
+add(3, 1.8)
+add(1, -5)
+
+def helloWorld():
+	print('HelloWorld')
+
+helloWorld()
+
+def helloCheck(message = 'helloCheck'):
+	print(message)
+
+helloCheck()
+helloCheck('sample')
+
+
+# 変数のスコープ
+t = 1
+
+def change():
+	global t
+	t = 2
+	print('in', t)
+
+print('out', t)
+change()
