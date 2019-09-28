@@ -20,6 +20,10 @@ class House:
 	# __init__()メソッドの定義
 	def __init__(self, name):
 		self.namePlate = name
+	
+	# メソッドの定義
+	def hello(self):
+		print('{}の家です'.format(self.namePlate))
 
 # __init__() : インスタンス化する際に自動的に呼ばれるメソッド
 # self というのは
@@ -34,4 +38,37 @@ class House:
 # そのため、メソッドの第一引数は self とし、渡されてくる自分自身への参照を受け取るようにしている。
 # ただし、呼び出す際にはそのインスタンスを引数に指定する必要はない。
 
-myHouse = House('sample')
+house1 = House('sample')
+house2 = House('たけし')
+
+house1.hello()
+house2.hello()
+
+# ==============================================================
+# 継承
+# ==============================================================
+# あるクラスを定義したとき、その一部の機能だけほしいときがあったり
+# 一部の機能だけ付け加えたかったりする時がある。
+# これを実現するのが継承。
+
+# 以下のLinkというクラスには、
+# 引数を1つも取らないが、中の属性としてa,bの2つの変数を持ち、
+# それぞれ1,2という値が代入されている。
+class ParentLink:
+	def __init__(self):
+		self.a = 1
+		self.b = 2
+
+linkCheck = ParentLink()
+print(linkCheck.a)
+print(linkCheck.b)
+
+# 上のLinkを継承したクラスChildrenLinkを生成する。
+class ChildrenLink(ParentLink):
+	def sum(self):
+		return self.a + self.b
+
+children = ChildrenLink()
+print(children.a)
+print(children.b)
+print(children.sum())
