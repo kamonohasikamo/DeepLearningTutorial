@@ -64,11 +64,31 @@ print(linkCheck.a)
 print(linkCheck.b)
 
 # 上のLinkを継承したクラスChildrenLinkを生成する。
+
+# a という属性は、ChildrenLink の親クラスである ParentLink の __init__() メソッドで定義されている。 
+# ChildrenLink クラスにも __init__() メソッドを定義したため、
+# 親クラスである ParentLink の __init__() メソッドが上書きされてしまい実行されなかった。 
+# しかし、親クラスの __init__() メソッドを明示的に呼ぶことで、これは解決できる。
+
+# それには、super() という組み込み関数を用いる。 
+# これを用いると、子クラスから親クラスを参照することができる。
+
 class ChildrenLink(ParentLink):
+	def __init__(self):
+		super().__init__() # 親クラスの__init__を呼び出す
+		self.c = 5 # cを追加
+
 	def sum(self):
-		return self.a + self.b
+		return self.a + self.b + self.c # cを追加
 
 children = ChildrenLink()
 print(children.a)
 print(children.b)
 print(children.sum())
+
+class ChiChildrenLink(ChildrenLink):
+	def mul(self):
+		return self.a * self.b * self.c
+
+chichildren = ChiChildrenLink()
+print(chichildren.mul())
